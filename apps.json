@@ -1,0 +1,39 @@
+{
+    "name": "Haodeptrais1thegioi+",
+    "identifier": "choigamevui.10",
+    "sourceURL": "gamevuilam.ml",
+    "iconURL": "https://seeklogo.com/images/P/pubg-mobile-logo-28E182F8A8-seeklogo.com.png",
+    "sourcceDescription": "74",
+    "apps": [
+
+        {
+            "name": "PUBG MOBILE",
+            "bundleIdentifier": "vn.vng.pubgmobile",
+            "developerName": "Hao",
+            "version": "2.4.1",
+            "versionDate": "2023-02-2T19:09:55+05:17",
+            "versionDescription": "Esp Aimbot No recoil+",
+            "downloadURL": "https://archive.org/download/pubg-2.4.0-by-kasar/PUBG_2.4.0_by_kasar.ipa",
+            "localizedDescription": "Esp Aimbot No recoil",
+            "iconURL": "https://play-lh.googleusercontent.com/JRd05pyBH41qjgsJuWduRJpDeZG0Hnb0yjf2nWqO7VaGKL10-G5UIygxED-WNOc3pg=w240-h480-rw",
+            "tintColor": "018084",
+            "isLanZouCloud": 1,
+            "size": 1.98e+9
+        },
+       
+         {
+            "name": "CarX Street",
+            "bundleIdentifier": "com.carxtech.sr",
+            "developerName": "KASAR",
+            "version": "0.4.2",
+            "versionDate": "2022-12-02T15:00:00+08:00",
+            "versionDescription": "Hacked",
+            "downloadURL": "https://api.onedrive.com/v1.0/shares/u!aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZzFRZUVHTTdWUldsa2FOb2VUUXk1TTYtT2x1/root/content",
+            "localizedDescription": "CarX Street",
+            "iconURL": "https://is3-ssl.mzstatic.com/image/thumb/Purple112/v4/20/dc/8d/20dc8d96-d4b2-bb48-b1ed-116c4b2834e3/AppIcon-1x_U007emarketing-0-7-0-85-220.png/350x350bb.jpg",
+            "tintColor": "018084",
+            "isLanZouCloud": 1,
+            "size": 3468186092
+        }
+    ]
+}
