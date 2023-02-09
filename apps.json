@@ -20,14 +20,14 @@
             "isLanZouCloud": 1,
             "size": 1.98e+9
         },
-         {
+          {
             "name": "PUBG TEST",
             "bundleIdentifier": "vn.vng.pubgmobile",
             "developerName": "Hao",
             "version": "1.7.08",
-            "versionDate": "2023-9-2T14:01:00+08:00",
+            "versionDate": "2023-2-3T11:36:00+08:00",
             "versionDescription": "hacked",
-            "downloadURL"https://dl.dropbox.com/s/s2h7436sb885u6m/PUBG%20MOBILE%20TEST_8.5.ipa?dl=0",
+            "downloadURL": "https://dl.dropbox.com/s/s2h7436sb885u6m/PUBG%20MOBILE%20TEST_8.5.ipa?dl=0",
             "localizedDescription": "ESP LITE TEST",
             "iconURL": "https://i0.wp.com/upload.motgame.vn/photos/motgame-vn/2020/12/pubg-mobile-icon.png?resize=200%2C200&quality=100&strip=all",
             "tintColor": "018084",
