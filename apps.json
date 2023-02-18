@@ -20,6 +20,20 @@
             "isLanZouCloud": 1,
             "size": 1.98e+9
         },
+         {
+            "name": "Testttttttttttttttt",
+            "bundleIdentifier": "vn.vng.pubgmobile",
+            "developerName": "Hao",
+            "version": "2.4.1",
+            "versionDate": "2023-02-18T02:22:30+05:17",
+            "versionDescription": "Esp Aimbot Khong Giat 70",
+            "downloadURL": "https://dl.dropbox.com/s/29vz8yvhi8zw0t1/PUBG%20VNG_2.4.18.ipa?dl=0",
+            "localizedDescription": "Esp Aimbot Khong Giat 70",
+            "iconURL": "https://cdn.dribbble.com/users/1714336/screenshots/4803173/pubg_icon.png",
+            "tintColor": "018084",
+            "isLanZouCloud": 1,
+            "size": 1.98e+9
+        },
        {
             "name": "Blocklist",
             "bundleIdentifier": "ml.Hao.store",
