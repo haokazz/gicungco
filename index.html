@@ -1,41 +1,155 @@
-<!DOCTYPE html>
 <html>
-<head>
-	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Nhìn cc</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<main>
-		<header>
-		<img src="./img/logo.jpg">
-		<h1>𝐖𝐄𝐁 𝐓𝐀𝐈 𝐆𝐀𝐌𝐄</h1>
-	</header>
-	<ul>
-		<li>
-			<a href="webden"> <img src="./img/home.png" style="
-    width: 3px;
-    height: 3px;
-    padding-bottom: 3px;"
-    >Website</a>
-		</li>
-        
-		<li>
-			<a href="google.com"><img src="./img/facebook.png"
-				style="
-    width: 3px;
-    height: 3px;
-    padding-bottom: 3px;"
+    <head>
+        <title>HTML5 Canvas Winning Wheel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="main.css" type="text/css" />
+        <link type="icon/x-icon" href="favicon.ico" rel="shortcut icon" />
+        <script type="text/javascript" src="Winwheel.min.js"></script>
+        <script src="TweenMax.min.js"></script>
+    </head>
+    <body>
+        <div align="center">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td>
+                        <button id="spin_start" class="btn" onClick="startSpin();">Quay ngay</button>
+                        <button id="spin_stop" class="btn" onClick="stopSpin();">Dừng lại</button>
+                        <button id="spin_reset" class="btn" onClick="resetWheel();">Quay lại</button>
+                    </td>
+                    <td width="438" height="582" class="the_wheel" align="center" valign="center">
+                        <canvas id="canvas" width="434" height="434">
+                            <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+                        </canvas>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            //Thông số vòng quay
+            let duration = 2; //Thời gian kết thúc vòng quay
+            let spins    = 3; //Quay nhanh hay chậm 3, 8, 15
+            let theWheel = new Winwheel({
+                'numSegments'  : 8,     // Chia 8 phần bằng nhau
+                'outerRadius'  : 212,   // Đặt bán kính vòng quay
+                'textFontSize' : 18,    // Đặt kích thước chữ
+                'rotationAngle': 0,     // Đặt góc vòng quay từ 0 đến 360 độ.
+                'segments'     :        // Các thành phần bao gồm màu sắc và văn bản.
+                [
+                   {'fillStyle' : '#eae56f', 'text' : 'Giải 1'},
+                   {'fillStyle' : '#89f26e', 'text' : 'Giải 2'},
+                   {'fillStyle' : '#7de6ef', 'text' : 'Giải 3'},
+                   {'fillStyle' : '#e7706f', 'text' : 'Giải 4'},
+                   {'fillStyle' : '#eae56f', 'text' : 'Giải 5'},
+                   {'fillStyle' : '#89f26e', 'text' : 'Giải 6'},
+                   {'fillStyle' : '#7de6ef', 'text' : 'Giải 7'},
+                   {'fillStyle' : '#e7706f', 'text' : 'Giải 8'}
+                ],
+                'animation' : {
+                    'type'     : 'spinOngoing',
+                    'duration' : duration,
+                    'spins'    : spins,
+                    'callbackSound'    : playSound,     //Hàm gọi âm thanh khi quay
+                    'soundTrigger'     : 'pin',         //Chỉ định chân là để kích hoạt âm thanh
+                    'callbackFinished' : alertPrize,    //Hàm hiển thị kết quả trúng giải thưởng
+                },
+                'pins' :
+                {
+                    'number' : 32   //Số lượng chân. Chia đều xung quanh vòng quay.
+                }
+            });
+            
+            //Kiểm tra vòng quay
+            let wheelSpinning = false;
+            
+            //Tạo âm thanh và tải tập tin tick.mp3.
+            let audio = new Audio('tick.mp3');
+            function playSound() {
+                audio.pause();
+                audio.currentTime = 0;
+                audio.play();
+            }
+            
+            //Hiển thị các nút vòng quay
+            function statusButton(status) {
+                if ( status==1 ) { //trước khi quay
+                    document.getElementById('spin_start').classList.remove("hide");
+                    document.getElementById('spin_stop').classList.add("hide");
+                    document.getElementById('spin_reset').classList.add("hide");
+                } else if ( status==2 ) { //đang quay
+                    document.getElementById('spin_start').classList.add("hide");
+                    document.getElementById('spin_stop').classList.remove("hide");
+                    document.getElementById('spin_reset').classList.add("hide");
+                } else if ( status==3 ) { //kết quả
+                    document.getElementById('spin_start').classList.add("hide");
+                    document.getElementById('spin_stop').classList.add("hide");
+                    document.getElementById('spin_reset').classList.remove("hide");
+                } else {
+                    alert('Các giá trị của status: 1, 2, 3');
+                }
+            }
+            statusButton(1);
+            
+            //startSpin
+            function startSpin() {
+                // Ensure that spinning can't be clicked again while already running.
+                if (wheelSpinning == false) {
+                    //CSS hiển thị button
+                    statusButton(2);
+                    
+                    //Cấu hình vòng quay
+                    theWheel.animation = {
+                        'type'     : 'spinOngoing',
+                        'duration' : duration,
+                        'spins'    : spins,
+                        'callbackSound'    : playSound,     //Hàm gọi âm thanh khi quay
+                        'soundTrigger'     : 'pin',         //Chỉ định chân là để kích hoạt âm thanh
+                        'callbackFinished' : alertPrize,    //Hàm hiển thị kết quả trúng giải thưởng
+                    };
+                    
+                    //Hàm bắt đầu quay
+                    theWheel.startAnimation();
+                }
+            }
+            
+            //stopSpin
+            function stopSpin() {
+                if (wheelSpinning == false) {
+                    theWheel.animation = {
+                        'type'     : 'spinToStop',
+                        'duration' : (duration + 13),
+                        'spins'    : (spins + 1),
+                        'callbackSound'    : playSound,     //Hàm gọi âm thanh khi quay
+                        'soundTrigger'     : 'pin',         //Chỉ định chân là để kích hoạt âm thanh
+                        'callbackFinished' : alertPrize,    //Hàm hiển thị kết quả trúng giải thưởng
+                    };
 
-    >Facebook</a>
-		</li>
-	</ul>
-	</main>
-	<p> 0865752025</p>
-		</script>
-		
-	</div>
-</body>
+                    //Hàm bắt đầu quay
+                    theWheel.startAnimation();
+
+                    //Khóa vòng quay
+                    wheelSpinning = true;
+                }
+            }
+            
+            //Result
+            function alertPrize(indicatedSegment) {
+                //CSS hiển thị button
+                statusButton(3);
+                
+                alert("Chúc mừng bạn trúng: " + indicatedSegment.text);
+            }
+
+            //resetWheel
+            function resetWheel() {
+                //CSS hiển thị button
+                statusButton(1);
+                
+                theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                theWheel.draw();                // Call draw to render changes to the wheel.
+
+                wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+            }
+        </script>
+    </body>
 </html>
